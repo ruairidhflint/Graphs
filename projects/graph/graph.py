@@ -52,11 +52,25 @@ class Graph:
                     q.enqueue(neighbor)
 
     def dft(self, starting_vertex):
-        """
-        Print each vertex in depth-first order
-        beginning from starting_vertex.
-        """
-        pass  # TODO
+        # Create a stack
+        s = Stack()
+        # Create a visited set
+        visited = set()
+        # push starting vertex
+        s.push(starting_vertex)
+        # While stack has length:
+        while s.size() > 0:
+            # pop to temp variable
+            temp_item = s.pop()
+            # Check to see if item in temp var is in visited...if not:
+            if temp_item not in visited:
+                # print temp variable
+                print(temp_item)
+                # add to visited
+                visited.add(temp_item)
+                # loop through neighbours of temp variable and enqueue
+                for neighbor in self.get_neighbors(temp_item):
+                    s.push(neighbor)
 
     def dft_recursive(self, starting_vertex):
         """
@@ -136,7 +150,7 @@ if __name__ == '__main__':
         1, 2, 4, 3, 7, 6, 5
         1, 2, 4, 3, 7, 5, 6
     '''
-    graph.bft(1)
+    # graph.bft(1)
 
     '''
     Valid DFT paths:
@@ -145,7 +159,7 @@ if __name__ == '__main__':
         1, 2, 4, 7, 6, 3, 5
         1, 2, 4, 6, 3, 5, 7
     '''
-    # graph.dft(1)
+    graph.dft(1)
     # graph.dft_recursive(1)
 
     '''
