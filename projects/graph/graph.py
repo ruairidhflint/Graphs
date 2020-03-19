@@ -117,12 +117,30 @@ class Graph:
                     q.enqueue(copy)
 
     def dfs(self, starting_vertex, destination_vertex):
-        """
-        Return a list containing a path from
-        starting_vertex to destination_vertex in
-        depth-first order.
-        """
-        pass  # TODO
+        # Initiate stack
+        s= Stack()
+        # Initiate visited set
+        visited = set()
+        # Enqueue a LIST (which will be the path), containing the starting vertex
+        s.push([starting_vertex])
+        # As before, loop through until the stack is empty
+        while s.size() > 0:
+            # initiate temp var which will hold the popped list
+            temp_var = s.pop()
+            # Check last item is not in visited
+            if temp_var[-1] not in visited:
+                # Check if last item matches destination vertex
+                if temp_var[-1] == destination_vertex:
+                    # return list
+                    return temp_var
+                # we add last item to visited
+                visited.add(temp_var[-1])
+                # get all neighbours of last item
+                for neighbor in self.get_neighbors(temp_var[-1]):
+                    #  make copy of current path, adding neighbours to it, then push
+                    copy = list(temp_var)
+                    copy.append(neighbor)
+                    s.push(copy)
 
     def dfs_recursive(self, starting_vertex):
         """
@@ -193,12 +211,12 @@ if __name__ == '__main__':
     Valid BFS path:
         [1, 2, 4, 6]
     '''
-    print(graph.bfs(1, 6))
+    # print(graph.bfs(1, 6))
 
     '''
     Valid DFS paths:
         [1, 2, 4, 6]
         [1, 2, 4, 7, 6]
     '''
-    # print(graph.dfs(1, 6))
+    print(graph.dfs(1, 6))
     # print(graph.dfs_recursive(1, 6))
