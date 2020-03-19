@@ -2,7 +2,7 @@ class Graph():
     def __init__(self):
         self.vertices = {}
 
-    def add_vertices(self, new_vertex):
+    def add_vertex(self, new_vertex):
         if new_vertex not in self.vertices:
             self.vertices[new_vertex] = set()
         else:
@@ -33,4 +33,38 @@ class Queue():
 
 
 def earliest_ancestor(ancestors, starting_node):
-    pass
+    # Initialise graph
+    graph = Graph()
+
+    # Loop through tuples adding parent and child as vertices
+    for (parent, child) in ancestors:
+        if child not in graph.vertices:
+            graph.add_vertex(child)
+        if parent not in graph.vertices:
+            graph.add_vertex(parent)
+        
+        # Connect child to parent each time 
+        graph.add_edge(child, parent)
+
+    
+    # Continue with standard bfs traversal
+
+    q = Queue()
+    visited = set()
+
+    q.enqueue(starting_node)
+
+    temp = None
+
+    while q.size() > 0:
+        temp = q.dequeue()
+
+        if temp not in visited:
+            visited.add(temp)
+            for neighbor in graph.vertices[temp]:
+                q.enqueue(neighbor)
+    
+    if temp == starting_node:
+        return -1
+    
+    return temp
