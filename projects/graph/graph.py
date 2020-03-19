@@ -31,11 +31,25 @@ class Graph:
             return None
 
     def bft(self, starting_vertex):
-        """
-        Print each vertex in breadth-first order
-        beginning from starting_vertex.
-        """
-        pass  # TODO
+        # Create a queue
+        q = Queue()
+        # Create a visited set
+        visited = set()
+        # Enqueue starting vertex
+        q.enqueue(starting_vertex)
+        # While queue has length:
+        while q.size() > 0:
+            # dequeue to temp variable
+            temp_item = q.dequeue()
+            # Check to see if item in temp var is in visited...if not:
+            if temp_item not in visited:
+                # print temp variable
+                print(temp_item)
+                # add to visited
+                visited.add(temp_item)
+                # loop through neighbours of temp variable and enqueue
+                for neighbor in self.get_neighbors(temp_item):
+                    q.enqueue(neighbor)
 
     def dft(self, starting_vertex):
         """
@@ -105,7 +119,7 @@ if __name__ == '__main__':
     Should print:
         {1: {2}, 2: {3, 4}, 3: {5}, 4: {6, 7}, 5: {3}, 6: {3}, 7: {1, 6}}
     '''
-    print(graph.vertices)
+    # print(graph.vertices)
 
     '''
     Valid BFT paths:
@@ -122,7 +136,7 @@ if __name__ == '__main__':
         1, 2, 4, 3, 7, 6, 5
         1, 2, 4, 3, 7, 5, 6
     '''
-    # graph.bft(1)
+    graph.bft(1)
 
     '''
     Valid DFT paths:
