@@ -48,12 +48,12 @@ world = World()
 
 
 # You may uncomment the smaller graphs for development and testing purposes.
-# map_file = "maps/test_line.txt"
+map_file = "maps/test_line.txt"
 # map_file = "maps/test_cross.txt"
 # map_file = "maps/test_loop.txt"
 # map_file = "maps/test_loop_fork.txt"
 
-map_file = "maps/main_maze.txt"
+# map_file = "maps/main_maze.txt"
 my_file = os.path.join(THIS_FOLDER, map_file)
 
 # Loads the map into a dictionary
@@ -68,6 +68,22 @@ player = Player(world.starting_room)
 # Fill this out with directions to walk
 # traversal_path = ['n', 'n']
 traversal_path = []
+
+'''
+Thoughts:
+
+From the starting point we need to essentially choose a random direction and do a depth traveral
+as far as we can. Every room that we enter will mean we need to update the '?' direction from the
+previous room as well as it's own.
+
+Any direction that cannot be travered we can mark accordingly.
+
+We could use a BFT to handle some initial issues but I think potentially the whole thing could be done
+with just DFT.
+
+We will need to keep track of the previous direction, cardinal value, current room ID etc. 
+
+'''
 
 
 # TRAVERSAL TEST
