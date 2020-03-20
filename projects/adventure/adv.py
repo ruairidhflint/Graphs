@@ -5,6 +5,9 @@ from world import World
 import random
 from ast import literal_eval
 
+import os
+THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
+
 # Load world
 world = World()
 
@@ -14,10 +17,12 @@ world = World()
 # map_file = "maps/test_cross.txt"
 # map_file = "maps/test_loop.txt"
 # map_file = "maps/test_loop_fork.txt"
+
 map_file = "maps/main_maze.txt"
+my_file = os.path.join(THIS_FOLDER, map_file)
 
 # Loads the map into a dictionary
-room_graph=literal_eval(open(map_file, "r").read())
+room_graph=literal_eval(open(my_file, "r").read())
 world.load_graph(room_graph)
 
 # Print an ASCII map
