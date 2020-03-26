@@ -82,10 +82,12 @@ player = Player(world.starting_room)
 
 # Traversal path as list not DICT
 traversalPath = []
+opposite_directions = {'n': 's', 's': 'n', 'e': 'w', 'w': 'e'}
 
 # DICT of rooms instead of Traversal path
+rooms = {}
 # As in guided lecture, a visited set
-
+visited = set()
 
 # Create a depth first search - takes in current room, the direction we came from and the previous room's ID
 
