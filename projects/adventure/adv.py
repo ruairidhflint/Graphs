@@ -80,8 +80,46 @@ world.print_rooms()
 
 player = Player(world.starting_room)
 
+# Reverse directions to save logic later
 reverse_directions = {'n': 's', 's': 'n', 'e':'w', 'w':'e'}
+
+# Dictionary for traversal path (could be a set?)
 traversal_path = {}
+
+
+# Use a stack to begin with, queue later if necessary
+s = Stack()
+# Keep track of the last room id
+previous_room = None
+# Keep track of the direction we came from
+previous_direction = None
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
