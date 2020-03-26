@@ -153,11 +153,18 @@ def breath_first_search(current_rooms_id):
             values = list(rooms[last_value].values())
             # If any of the values are ? or the length's or the room graph match the visited set
             if '?' in values or len(room_graph) == len(visited):
+                # return that path
                 return temp_var_path
-# return that path
-# add to the rooms visited the current room id
-# loop through the the rooms held in the values list
-# go through the motions of adding a new list that is a copy and enqueueing
+            # a dd to the rooms visited the current room id
+            visited_2.add(last_value)
+            # loop through the the rooms held in the values list
+            for next_room in values:
+                # go through the motions of adding a new list that is a copy and enqueueing
+                if (next_room == 0
+                        or next_room) and next_room not in visited_2:
+                    new_path = list(temp_var_path)
+                    new_path.append(next_room)
+                    q.enqueue(new_path)
 
 # FUnction to bring it all together
 
