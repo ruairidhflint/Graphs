@@ -63,12 +63,12 @@ world = World()
 
 
 # You may uncomment the smaller graphs for development and testing purposes.
-map_file = "maps/test_line.txt"
+# map_file = "maps/test_line.txt"
 # map_file = "maps/test_cross.txt"
 # map_file = "maps/test_loop.txt"
 # map_file = "maps/test_loop_fork.txt"
 
-# map_file = "maps/main_maze.txt"
+map_file = "maps/main_maze.txt"
 my_file = os.path.join(THIS_FOLDER, map_file)
 
 # Loads the map into a dictionary
@@ -134,6 +134,7 @@ def depth_first_r(current_room, prev_dir=None, prev_room_id=None):
 
 # Breadth first search on a current room
 
+
 def breath_first_search(current_rooms_id):
     # Create queue
     q = Queue()
@@ -143,7 +144,7 @@ def breath_first_search(current_rooms_id):
     visited_2 = set()
     # whilst queue is larger than zero
     while q.size() > 0:
-    # dequeue to temp var
+        # dequeue to temp var
         temp_var_path = q.dequeue()
         # current id is the last value
         last_value = temp_var_path[-1]
@@ -170,11 +171,25 @@ def breath_first_search(current_rooms_id):
 
 
 def traverse_rooms():
-    pass
-# whilst the length of the room graph is not equal to the length of the visited,
-# DO a depth first search starting at the current room.
-# The path is the same except a breadth first search
-# Loop through every single room in the path, adding the relevant valyes to the traversal path
+    # whilst the length of the room graph is not equal to the length of the visited
+    while len(room_graph) != len(visited):
+        # DO a depth first search starting at the current room.
+        depth_first_r(player.current_room)
+        # The path is the same except a breadth first search
+        path = breath_first_search(player.current_room.id)
+        # Loop through every single room in the path, adding the relevant valyes to the traversal path
+        for index in range(0, len(path) - 1):
+            # Loop through every single room in the path, adding the relevant valyes to the traversal path
+            currentroom_ID = path[index]
+            next_room_id = path[index + 1]
+            current_room = rooms[currentroom_ID]
+            keys = list(current_room.keys())
+            values = list(current_room.values())
+            cardinal = keys[values.index(next_room_id)]
+            player.travel(cardinal)
+            traversalPath.append(cardinal)
+
+traverse_rooms()
 
 
 # TRAVERSAL TEST
