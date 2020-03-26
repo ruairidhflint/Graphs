@@ -65,9 +65,8 @@ world.print_rooms()
 
 player = Player(world.starting_room)
 
-# Fill this out with directions to walk
-# traversal_path = ['n', 'n']
-traversal_path = []
+reverse_directions = {'n': 's', 's': 'n', 'e':'w', 'w':'e'}
+traversal_path = {}
 
 '''
 Thoughts:
