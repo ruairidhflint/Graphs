@@ -98,6 +98,15 @@ def depth_first_r(current_room, prev_dir=None, prev_room_id=None):
     # Loop through the get_exits() functionality and check if any exist
     exits = current_room.get_exits()
 
+    if 'n' not in exits:
+        room['n'] = None
+    if 'e' not in exits:
+        room['e'] = None
+    if 's' not in exits:
+        room['s'] = None
+    if 'w' not in exits:
+        room['w'] = None
+
 # if the current room id is not in the room dict
 
 # set the current room's id to the room dict
