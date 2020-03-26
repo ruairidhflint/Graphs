@@ -63,12 +63,12 @@ world = World()
 
 
 # You may uncomment the smaller graphs for development and testing purposes.
-map_file = "maps/test_line.txt"
+# map_file = "maps/test_line.txt"
 # map_file = "maps/test_cross.txt"
 # map_file = "maps/test_loop.txt"
 # map_file = "maps/test_loop_fork.txt"
 
-# map_file = "maps/main_maze.txt"
+map_file = "maps/main_maze.txt"
 my_file = os.path.join(THIS_FOLDER, map_file)
 
 # Loads the map into a dictionary
@@ -81,18 +81,18 @@ world.print_rooms()
 player = Player(world.starting_room)
 
 # Reverse directions to save logic later
-reverse_directions = {'n': 's', 's': 'n', 'e':'w', 'w':'e'}
+# reverse_directions = {'n': 's', 's': 'n', 'e':'w', 'w':'e'}
 
 # Dictionary for traversal path (could be a set?)
-traversal_path = {}
+# traversal_path = {}
 
 
 # Use a stack to begin with, queue later if necessary
-s = Stack()
+# s = Stack()
 # Keep track of the last room id
-previous_room = None
+# previous_room = None
 # Keep track of the direction we came from
-previous_direction = None
+# previous_direction = None
 
 
 # Whilst the traversal graph is smaller than the room graph itself, we need to keep exploring
@@ -116,12 +116,10 @@ previous_direction = None
     # If we can go nowhere, go back to the previous room and try somewhere else.
 
 
-
-
-
-
-
-
+traversalPath = []
+opposite_directions = {'n': 's', 's': 'n', 'e': 'w', 'w': 'e'}
+rooms = {}
+visited = set()
 
 
 
@@ -146,13 +144,13 @@ visited_rooms = set()
 player.current_room = world.starting_room
 visited_rooms.add(player.current_room)
 
-for move in traversal_path:
+for move in traversalPath:
     player.travel(move)
     visited_rooms.add(player.current_room)
 
 if len(visited_rooms) == len(room_graph):
     print(
-        f"TESTS PASSED: {len(traversal_path)} moves, {len(visited_rooms)} rooms visited")
+        f"TESTS PASSED: {len(traversalPath)} moves, {len(visited_rooms)} rooms visited")
 else:
     print("TESTS FAILED: INCOMPLETE TRAVERSAL")
     print(f"{len(room_graph) - len(visited_rooms)} unvisited rooms")
