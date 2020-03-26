@@ -90,13 +90,13 @@ rooms = {}
 visited = set()
 
 # Create a depth first search - takes in current room, the direction we came from and the previous room's ID
-def depth_first_r(current_roon, prev_dir, prev_room_id):
-    pass
-# add current room's id tov visited set
-
-# set the temp room dict with all the cardinal values set to ?
-
-# Loop through the get_exits() functionality and check if any exist
+def depth_first_r(current_room, prev_dir=None, prev_room_id=None):
+    # add current room's id tov visited set
+    visited.add(current_room.id)
+    # set the temp room dict with all the cardinal values set to ?
+    room = {'n': '?', 'e': '?', 's': '?', 'w': '?'}
+    # Loop through the get_exits() functionality and check if any exist
+    exits = current_room.get_exits()
 
 # if the current room id is not in the room dict
 
