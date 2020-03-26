@@ -90,7 +90,8 @@ rooms = {}
 visited = set()
 
 # Create a depth first search - takes in current room, the direction we came from and the previous room's ID
-
+def depth_first_r(current_roon, prev_dir, prev_room_id):
+    pass
 # add current room's id tov visited set
 
 # set the temp room dict with all the cardinal values set to ?
@@ -108,6 +109,8 @@ visited = set()
 
 
 # Breadth first search on a current room
+def breath_first_search(current_rooms_id):
+    pass
 # Create quite
 # Add list with current room is
 # Make temp set
@@ -123,6 +126,8 @@ visited = set()
 # go through the motions of adding a new list that is a copy and enqueueing
 
 # FUnction to bring it all together
+def traverse_rooms():
+    pass
 # whilst the length of the room graph is not equal to the length of the visited,
 # DO a depth first search starting at the current room.
 # The path is the same except a breadth first search
