@@ -129,23 +129,31 @@ def depth_first_r(current_room, prev_dir=None, prev_room_id=None):
             traversalPath.append(next_room)
             # Recursively run the function again on the new room
             depth_first_r(player.current_room, next_room, current_room.id)
-            
+
             return
 
 # Breadth first search on a current room
 
-
 def breath_first_search(current_rooms_id):
-    pass
-# Create quite
-# Add list with current room is
-# Make temp set
-# whilst queue is larger than zero
-# dequeue to temp var
-# current id is the last value
-# if that is is not in visited
-# make a new list of the room's values
-# If any of the values are ? or the length's or the room graph match the visited set
+    # Create queue
+    q = Queue()
+    # Add list with current room is
+    q.enqueue([current_rooms_id])
+    # Make temp set
+    visited_2 = set()
+    # whilst queue is larger than zero
+    while q.size() > 0:
+    # dequeue to temp var
+        temp_var_path = q.dequeue()
+        # current id is the last value
+        last_value = temp_var_path[-1]
+        # if that is is not in visited
+        if last_value not in visited_2:
+            # make a new list of the room's values
+            values = list(rooms[last_value].values())
+            # If any of the values are ? or the length's or the room graph match the visited set
+            if '?' in values or len(room_graph) == len(visited):
+                return temp_var_path
 # return that path
 # add to the rooms visited the current room id
 # loop through the the rooms held in the values list
