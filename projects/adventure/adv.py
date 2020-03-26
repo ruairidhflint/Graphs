@@ -1,3 +1,18 @@
+'''
+Thoughts:
+
+From the starting point we need to essentially choose a random direction and do a depth traveral
+as far as we can. Every room that we enter will mean we need to update the '?' direction from the
+previous room as well as it's own.
+
+Any direction that cannot be travered we can mark accordingly.
+
+We could use a BFT to handle some initial issues but I think potentially the whole thing could be done
+with just DFT.
+
+We will need to keep track of the previous direction, cardinal value, current room ID etc. 
+
+'''
 from room import Room
 from player import Player
 from world import World
@@ -68,21 +83,6 @@ player = Player(world.starting_room)
 reverse_directions = {'n': 's', 's': 'n', 'e':'w', 'w':'e'}
 traversal_path = {}
 
-'''
-Thoughts:
-
-From the starting point we need to essentially choose a random direction and do a depth traveral
-as far as we can. Every room that we enter will mean we need to update the '?' direction from the
-previous room as well as it's own.
-
-Any direction that cannot be travered we can mark accordingly.
-
-We could use a BFT to handle some initial issues but I think potentially the whole thing could be done
-with just DFT.
-
-We will need to keep track of the previous direction, cardinal value, current room ID etc. 
-
-'''
 
 
 # TRAVERSAL TEST
