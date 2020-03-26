@@ -90,6 +90,8 @@ rooms = {}
 visited = set()
 
 # Create a depth first search - takes in current room, the direction we came from and the previous room's ID
+
+
 def depth_first_r(current_room, prev_dir=None, prev_room_id=None):
     # add current room's id tov visited set
     visited.add(current_room.id)
@@ -108,16 +110,31 @@ def depth_first_r(current_room, prev_dir=None, prev_room_id=None):
         room['w'] = None
 
 # if the current room id is not in the room dict
-
-# set the current room's id to the room dict
-
-# if there is a previous direction
-
-# set the oppsoite direction and current direction to match between rooms
-# Loop through the rooms that are abilable and try to travel to any with a ?
-
+    if not current_room.id in rooms.keys():
+        # set the current room's id to the room dict
+        rooms[current_room.id] = room
+    # if there is a previous direction
+    if prev_dir:
+        # set the oppsoite direction and current direction to match between rooms
+        rooms[current_room.id][
+            opposite_directions[prev_dir]] = prev_room_id
+    # Loop through the rooms that are abilable and try to travel to any with a ?
+    for next_room in rooms[current_room.id]:
+        if rooms[current_room.id][next_room] == '?':
+            # move through the room if it is yet unexplored
+            player.travel(next_room)
+            # Update the id
+            rooms[current_room.id][next_room] = player.current_room.id
+            # Add to the traversal path
+            traversalPath.append(next_room)
+            # Recursively run the function again on the new room
+            depth_first_r(player.current_room, next_room, current_room.id)
+            
+            return
 
 # Breadth first search on a current room
+
+
 def breath_first_search(current_rooms_id):
     pass
 # Create quite
@@ -135,6 +152,8 @@ def breath_first_search(current_rooms_id):
 # go through the motions of adding a new list that is a copy and enqueueing
 
 # FUnction to bring it all together
+
+
 def traverse_rooms():
     pass
 # whilst the length of the room graph is not equal to the length of the visited,
