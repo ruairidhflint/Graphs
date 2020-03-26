@@ -95,7 +95,25 @@ previous_room = None
 previous_direction = None
 
 
+# Whilst the traversal graph is smaller than the room graph itself, we need to keep exploring
 
+    # Get current room the player is in
+
+    # Check if it has been traversed or not
+        # If not make a list of the room's exits using getExits()
+        # Add room to traversal graph with  the exits the value in a dict
+    
+    # Check for previous room
+        # If there is one, we need to update it's value for the direction we travelled to 
+        # current room ID
+        # Give the current room's opposite direction value to match
+    # Previous room should be updated to the current room
+
+    # Check to see if we can actually go anywhere and if we have tried yet
+
+    # Log which directions we can move
+    
+    # If we can go nowhere, go back to the previous room and try somewhere else.
 
 
 
